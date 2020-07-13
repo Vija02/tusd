@@ -79,9 +79,11 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"strconv"
 	"sync"
+	"time"
 
-	"github.com/tus/tusd/internal/uid"
+//	"github.com/tus/tusd/internal/uid"
 	"github.com/tus/tusd/pkg/handler"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -189,7 +191,7 @@ func (store S3Store) NewUpload(ctx context.Context, info handler.FileInfo) (hand
 
 	var uploadId string
 	if info.ID == "" {
-		uploadId = uid.Uid()
+		uploadId = strconv.FormatInt(time.Now().Unix(), 10) + info.MetaData["filename"]
 	} else {
 		// certain tests set info.ID in advance
 		uploadId = info.ID

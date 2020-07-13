@@ -1,3 +1,11 @@
+# FORKED
+This fork is to change how the file name is stored on uploading.
+- Only on S3 (Since that's the only one  i need)
+- Assumes the metadata for filename exists (Like how uppy supplies it)
+
+File name becomes: [unix timestamp][filename]  
+Modification on `pkg/s3store/s3store.go`
+
 # tusd
 
 <img alt="Tus logo" src="https://github.com/tus/tus.io/blob/master/assets/img/tus1.png?raw=true" width="30%" align="right" />
